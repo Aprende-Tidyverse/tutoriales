@@ -1,37 +1,39 @@
-library(reprex) #instalar el paquete reprex
-library(datapasta) # copiar y pagar datos 
+# dependencias ----------------------------------------------------------------------------------------------------
 
-# dependencias
+library(reprex) 
+library(datapasta) 
 library(tidyverse)
 
-# # lectura de los datos
-# datos <- read_csv("credito.csv")
-# 
-# # tomamos una muestra
-# datos |> 
-#   slice_sample(n = 15) |> 
-#   dpasta()
 
+# Leer datos ------------------------------------------------------------------------------------------------------
+
+# datos <- read_csv("data/credito.csv")
+# datos <- datos |> 
+#   slice_sample(n = 15)
 
 datos <- tibble::tribble(
-           ~Estado, ~Antiguedad,     ~Vivienda, ~Plazo, ~Edad, ~EstadoCivil, ~Registros,         ~Trabajo, ~Gastos, ~Ingresos, ~Activos, ~Deuda, ~Cantidad, ~Precio,
-           "bueno",          19, "propietario",     12,    34,     "casado",       "no",      "freelance",      75,       428,    32000,      0,       500,    1030,
-           "bueno",          15,        "otra",     60,    50,     "casado",       "no",           "fijo",      35,        92,     6000,      0,       900,     982,
-           "bueno",          12, "propietario",     60,    38,     "casado",       "no",           "fijo",      75,       120,     5000,      0,      1100,    1172,
-            "malo",           1,        "otra",     60,    42,     "casado",       "sí",      "freelance",      45,        NA,        0,      0,      1600,    1780,
-            "malo",           0,     "alquila",     48,    21,    "soltero",       "no", "tiempo parcial",      50,       148,        0,      0,      1500,    1575,
-            "malo",           6, "propietario",     60,    32,     "casado",       "no",           "fijo",      75,       160,     2200,    600,      1550,    1600,
-           "bueno",           2,     "alquila",     48,    45,     "casado",       "no",      "freelance",      47,       124,        0,      0,      1600,    1895,
-           "bueno",          10,      "padres",     48,    28,    "soltero",       "no",           "fijo",      35,       135,     6000,      0,      1500,    2164,
-           "bueno",          10, "propietario",     36,    34,     "casado",       "no",           "fijo",      90,       159,     3000,    250,       300,     500,
-           "bueno",           1, "propietario",     48,    48,     "casado",       "no",      "freelance",      45,       188,    14000,      0,       900,    1082,
-           "bueno",           8,      "padres",     48,    34,    "soltero",       "no",           "fijo",      35,        85,        0,      0,      1000,    1383,
-           "bueno",           2, "propietario",     60,    31,     "casado",       "no",           "fijo",      60,       306,     4000,      0,      1000,    2095,
-           "bueno",           2, "propietario",     36,    30,     "casado",       "no",      "freelance",      35,        NA,     4000,      0,      1100,    1850,
-           "bueno",           4,     "alquila",     60,    26,     "casado",       "no",           "fijo",      51,        60,        0,      0,      1750,    1950,
-           "bueno",           4,      "padres",     60,    27,     "casado",       "no",      "freelance",      35,        NA,        0,      0,      1050,    1214
-           )
+  ~Estado, ~Antiguedad,     ~Vivienda, ~Plazo, ~Edad, ~EstadoCivil, ~Registros,         ~Trabajo, ~Gastos, ~Ingresos, ~Activos, ~Deuda, ~Cantidad, ~Precio,
+   "malo",          11,     "alquila",     60,    37,    "soltero",       "sí",           "fijo",      74,       135,        0,      0,      1400,    1937,
+   "malo",           1,     "alquila",     24,    31,   "separado",       "no", "tiempo parcial",      41,        58,       NA,     NA,       200,     300,
+  "bueno",           9, "propietario",     36,    24,     "casado",       "no",           "fijo",      45,       160,     4000,   2000,       450,    1388,
+  "bueno",           1,     "privado",     60,    24,     "casado",       "no",           "fijo",      45,       115,    14500,      0,      1400,    1675,
+   "malo",          20,        "otra",     60,    47,     "casado",       "sí",           "fijo",     105,        NA,        0,      0,       750,     843,
+  "bueno",           0, "propietario",     60,    29,     "casado",       "no",           "fijo",      60,       100,     5000,      0,       800,     960,
+  "bueno",           6, "propietario",     60,    22,    "soltero",       "no",           "fijo",      45,       233,    10000,      0,       850,    1014,
+   "malo",          14, "propietario",     60,    38,     "casado",       "sí",           "fijo",      60,       145,     5000,   2400,      1200,    1383,
+  "bueno",          18, "propietario",     18,    50,     "casado",       "no",           "fijo",      60,        75,     3000,      0,       280,     434,
+  "bueno",           7, "propietario",     36,    25,     "casado",       "no",           "fijo",      35,        70,     3000,    750,       650,     700,
+  "bueno",           8, "propietario",     60,    41,     "casado",       "no",           "fijo",      60,        70,     5000,      0,       900,    1300,
+  "bueno",           8,     "alquila",     60,    46,     "casado",       "no",      "freelance",      45,        NA,        0,      0,      1000,    1359,
+  "bueno",           8,     "privado",     36,    39,     "casado",       "no",           "fijo",      75,       128,     2500,      0,       550,     550,
+  "bueno",          22,     "alquila",     60,    38,     "casado",       "no",           "fijo",      70,       100,        0,      0,       500,     982,
+  "bueno",           3,      "padres",     48,    29,    "soltero",       "no",           "fijo",      35,       145,        0,      0,      1000,    1028
+  )
 
+
+
+# codigo que produce error ----------------------------------------------------------------------------------------
+  
 datos |> 
   filter(
     Registros = "no"

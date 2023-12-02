@@ -1,38 +1,27 @@
-library(tibble)
-library(janitor)
-library(readr)
-library(stringr)
-library(dplyr)
+
+# dependencias ----------------------------------------------------------------------------------------------------
+
+library(datapasta)
+library(rvest)
+library(readxl)
 
 
-# lectura de datos ------------------------------------------------------------------------------------------------
 
-datos <- 
-
-# limpieza de datos -----------------------------------------------------------------------------------------------
-
-as_numeric <- function(x) {
-  if_else(
-    condition = str_detect(x, ","),
-    true = parse_number(x),
-    false = parse_number(x, locale = locale(grouping_mark = " "))
-  )
-}
-
-datos <- clean_names(datos) |>
-  mutate(
-    across(
-      .cols = c(poblacion_total, densidad_poblacion),
-      .fns = as_numeric
-    )
+datos <- tibble::tribble(
+  ~ID.Cliente,                    ~Zona,              ~País,     ~Tipo.de.producto,
+      "C2421",                 "Europa",   "United Kingdom",              "Snacks",
+      "C1908",                 "Europa",            "Malta",            "Cárnicos",
+      "C7652",    "Australia y Oceanía", "Marshall Islands",            "Cereales",
+      "C2326",                 "África",             "Iran",              "Frutas",
+      "C5305", "Centroamérica y Caribe",        "Guatemala",   "Alimento infantil",
+      "C5168", "Centroamérica y Caribe",          "Grenada",              "Bebida",
+      "C9197",    "Australia y Oceanía",             "Fiji",              "Snacks",
+      "C2876",                 "África",          "Tunisia",          "Cosméticos",
+      "C8394", "Centroamérica y Caribe",          "Grenada",    "Cuidado personal",
+      "C8141",    "Australia y Oceanía",        "Australia", "Material de oficina",
+      "C3212",           "Norteamérica",        "Greenland",          "Cosméticos",
+      "C8904",                 "África",           "Angola",              "Snacks",
+      "C5218",                 "África",           "Zambia",              "Bebida"
   )
 
-glimpse(datos)
-
-
-
-
-
-
-
-
+datos
