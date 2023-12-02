@@ -6,7 +6,8 @@ Tutoriales para la comunidad Aprende tidyverse puedes unirte a nuestro grupo de 
 
 1. Taller como conectar los modelos de open AI con R 
   + [Video](https://us06web.zoom.us/rec/share/jQkeHTmFwRLn4wO8NkSsHRj_aFoXIF8oZL7iHEecMZgsR1dbIQBhH4Xq3S5R_49J.0r_Ludmq8fTBePBj)
-  + [Código Github] (https://github.com/Aprende-Tidyverse/taller_gpt)
+  
+  + [Código Github](https://github.com/Aprende-Tidyverse/taller_gpt)
 
 2. Ayudamos a un miembro del grupo a visualizar sus datos en le mapa de Uruguay.
 
